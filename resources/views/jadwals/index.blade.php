@@ -59,15 +59,9 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-<<<<<<< HEAD
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Layanan</h3>
-                    <div class="pull-right">
-                        <a href="{{ route('layanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Layanan</a>
-=======
                     <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Jadwal Pelayanan</h3>
                     <div class="pull-right">
                         <a href="{{ route('jadwals.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Jadwal Pelayanan</a>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                     </div>
                 </div>
                 <div class="box-body">
@@ -77,23 +71,13 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-<<<<<<< HEAD
-                                        <th>Nama Layanan</th>
-=======
                                         <th>Nama Pelayanan</th>
                                         <th>Hari Pelayanan</th>
                                         <th class="text-center">Sesi Pelayanan</th>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-<<<<<<< HEAD
-                                    @foreach ($layanans as $index=> $layanan)
-                                        <tr>
-                                            <td>{{ $index+1 }}</td>
-                                            <td>{{ $layanan->nama_layanan }}</td>
-=======
                                     @foreach ($jadwals as $index=> $jadwal)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
@@ -106,19 +90,11 @@
                                                     <a href="{{ route('sesis',[$jadwal->id]) }}" class="btn btn-danger btn-sm btn-flat">{{ $jadwal->sesis()->count() }}</a>
                                                 @endif
                                             </td>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
                                                         <td>
-<<<<<<< HEAD
-                                                        <a href="{{ route('layanans.edit',[$layanan->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                                        </td>
-                                                        <td>
-                                                        <form action="{{ route('layanans.delete',[$layanan->id]) }}" method="POST">
-=======
                                                         <form action="{{ route('jadwals.delete',[$jadwal->id]) }}" method="POST">
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
                                                             </form>

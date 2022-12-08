@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Jadwal extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-    protected $guarded = [];
-=======
 
     protected $guarded = [];
 
@@ -21,5 +18,4 @@ class Jadwal extends Model
     public function sesis(){
         return $this->hasMany(Sesi::class);
     }
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
 }

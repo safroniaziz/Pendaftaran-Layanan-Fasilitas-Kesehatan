@@ -58,12 +58,7 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-<<<<<<< HEAD
-                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Edit Data Layanan</h3>
-=======
                 <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Edit Data Jadwal Pelayanan</h3>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
-
             </div>
             <div class="box-body">
                 <div class="row">
@@ -81,11 +76,7 @@
                                 @else
                         @endif
                     </div>
-<<<<<<< HEAD
-                    <form action="{{ route('layanans.update',[$layanan->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
-=======
                     <form action="{{ route('jadwals.update',[$layanan->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                         {{ csrf_field() }} {{ method_field('PATCH') }}
                         <div class="form-group col-md-12">
                             <label for="exampleInputEmail1">Masukan Nama Layanan</label>
@@ -98,11 +89,7 @@
                         </div>
 
                         <div class="col-md-12 text-center">
-<<<<<<< HEAD
-                            <a href="{{ route('layanans') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
-=======
                             <a href="{{ route('jadwals') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                             <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
                         </div>
