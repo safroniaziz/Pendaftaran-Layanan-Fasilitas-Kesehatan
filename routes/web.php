@@ -28,9 +28,12 @@ Auth::routes();
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::controller(MitraController::class)->group(function(){
-    Route::get('/manajemen_data_mitra','index')->name('semua_mitra');
-    Route::get('/manajemen_data_mitra/create','create')->name('semua_mitra.create');
-    Route::post('/manajemen_data_mitra','post')->name('semua_mitra.post');
+    Route::get('/manajemen_data_mitra','index')->name('mitras');
+    Route::get('/manajemen_data_mitra/create','create')->name('mitras.create');
+    Route::post('/manajemen_data_mitra','post')->name('mitras.post');
+    Route::get('/manajemen_data_mitra/{mitra}/edit','edit')->name('mitras.edit');
+    Route::patch('/manajemen_data_mitra/{mitra}/update','update')->name('mitras.update');
+    Route::delete('/manajemen_data_mitra/{mitra}/delete','delete')->name('mitras.delete');
 });
 
 Route::controller(LayananController::class)->group(function(){

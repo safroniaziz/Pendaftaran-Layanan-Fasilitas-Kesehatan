@@ -59,28 +59,42 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data mitra</h3>
+                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Layanan</h3>
                     <div class="pull-right">
-                        <a href="{{ route('semua_mitra.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah mitra</a>
+                        <a href="{{ route('layanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Layanan</a>
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover table-bordered">
+                            <table class="table table-hover table-bordered" id="table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama mitra</th>
+                                        <th>Nama Layanan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($semua_mitra as $index=> $semua_mitra)
+                                    @foreach ($layanans as $index=> $layanan)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $semua_mitra->nama_mitra }}</td>
-                                            <td></td>
+                                            <td>{{ $layanan->nama_layanan }}</td>
+                                            <td style="display:inline-block !important;">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                        <a href="{{ route('layanans.edit',[$layanan->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                                        </td>
+                                                        <td>
+                                                        <form action="{{ route('layanans.delete',[$layanan->id]) }}" method="POST">
+                                                                {{ csrf_field() }} {{ method_field("DELETE") }}
+                                                                <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -92,3 +106,13 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#table').DataTable({
+                responsive : true,
+            });
+        } );
+    </script>
+@endpush
