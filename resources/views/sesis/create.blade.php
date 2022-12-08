@@ -59,7 +59,6 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Tambah Data Sesi Pelayanan <b>{{ $jadwal->layanan->nama_layanan }}</b></h3>
-
             </div>
             <div class="box-body">
                 <div class="row">
@@ -80,33 +79,42 @@
                     <form action="{{ route('sesis.post',[$jadwal->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Pilih Layanan</label>
-                            <select name="layanan_id" class="form-control">
-                                <option disabled selected>-- pilih layanan --</option>
-                            </select>
+                            <label for="exampleInputEmail1">Jadwal <a class="text-danger"></a></label>
+                            <input type="text" name="jadwal" value="{{ $jadwal->nama_hari }}" class="form-control" disabled>
                             <div>
-                                @if ($errors->has('layanan_id'))
-                                    <small class="form-text text-danger">{{ $errors->first('layanan_id') }}</small>
+                                @if ($errors->has('jadwal'))
+                                    <small class="form-text text-danger">{{ $errors->first('jadwal') }}</small>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Pilih Hari Pelayanan</label>
-                            <select name="nama_hari" class="form-control">
-                                <option disabled selected>-- pilih nama hari --</option>
-                                <option value="Senin">Senin</option>
-                                <option value="Selasa">Selasa</option>
-                                <option value="Rabu">Rabu</option>
-                                <option value="Kamis">Kamis</option>
-                                <option value="Jumat">Jumat</option>
-                                <option value="Sabtu">Sabtu</option>
-                                <option value="Minggu">Minggu</option>
-                            </select>
+                            <label for="exampleInputEmail1">Nama Sesi <a class="text-danger">contoh : sesi 1</a></label>
+                            <input type="text" name="nama_sesi" class="form-control">
                             <div>
-                                @if ($errors->has('nama_hari'))
-                                    <small class="form-text text-danger">{{ $errors->first('nama_hari') }}</small>
+                                @if ($errors->has('nama_sesi'))
+                                    <small class="form-text text-danger">{{ $errors->first('nama_sesi') }}</small>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Jam Mulai</label>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" value="{{ old('jam_mulai') }}" name="jam_mulai" id="jam_mulai" class="form-control pull-right">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Jam Selesai</label>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" value="{{ old('jam_selesai') }}" name="jam_selesai" id="jam_selesai" class="form-control pull-right">
                             </div>
                         </div>
 
@@ -121,3 +129,15 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('#timeBegin').datepicker({
+            format: 'yyyy/mm/dd', autoclose: true
+        })
+        
+        $('#timeEnd').datepicker({
+        format: 'yyyy/mm/dd', autoclose: true
+        })
+    </script>
+@endpush
