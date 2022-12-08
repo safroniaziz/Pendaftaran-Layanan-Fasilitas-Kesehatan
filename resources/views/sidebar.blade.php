@@ -17,6 +17,12 @@
     </a>
 </li>
 
+<li class="{{ set_active(['jadwals','jadwals.edit','jadwals.create']) }}">
+    <a href="{{ route('jadwals') }}">
+        <i class="fa fa-clock-o"></i> <span>Jadwal Pelayanan</span>
+    </a>
+</li>
+
 <li class="{{ set_active('mitras') }}">
     <a href="{{ route('mitras') }}">
         <i class="fa fa-user"></i> <span>Mitra</span>
