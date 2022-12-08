@@ -23,7 +23,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
+Route::controller(MitraController::class)->group(function(){
+    Route::get('/semua_mitra','index')->name('mitra.index');
+});
 
 Route::controller(RoleController::class)->group(function(){
     Route::get('/roles','index')->name('roles.index');
 });
+

@@ -4,7 +4,11 @@
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
     </a>
 </li>
-
+<li class="{{ set_active('administrator.mitra') }}">
+    <a href="{{ set_active('administrator.mitra') }}">
+        <i class="fa fa-user"></i> <span>Mitra</span>
+    </a>
+</li>
 <li class="treeview {{ set_active(['lpmpp.dosen','lpmpp.tendik','lpmpp.dosen.add','lpmpp.dosen.edit','lpmpp.tendik.add','lpmpp.tendik.edit']) }}">
     <a href="#">
         <i class="fa fa-users"></i> <span>Manajemen Data SDM</span>
