@@ -54,6 +54,7 @@ class SesiController extends Controller
     public function edit(Jadwal $jadwal, Sesi $sesi){
         return view('sesis.edit',[
             'sesi'  =>  $sesi,
+            'jadwal'  =>  $jadwal,
         ]);
     }
 

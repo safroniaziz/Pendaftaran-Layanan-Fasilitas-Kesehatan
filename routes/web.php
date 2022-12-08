@@ -58,8 +58,8 @@ Route::controller(JadwalPelayananController::class)->group(function(){
         Route::get('{jadwal}/sesi','index')->name('sesis');
         Route::get('{jadwal}/sesi/create','create')->name('sesis.create');
         Route::post('{jadwal}/sesi','post')->name('sesis.post');
-        Route::get('{jadwal}/edit','edit')->name('sesis.edit');
-        Route::patch('{jadwal}/update','update')->name('sesis.update');
+        Route::get('{jadwal}/edit/{sesi}','edit')->name('sesis.edit');
+        Route::patch('{jadwal}/update/{sesi}','update')->name('sesis.update');
         Route::delete('{jadwal}/delete/{sesi}','delete')->name('sesis.delete');
     });
 

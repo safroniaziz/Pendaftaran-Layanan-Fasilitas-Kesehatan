@@ -86,16 +86,13 @@
                                             <td>{{ $sesi->nama_sesi }}</td>
                                             <td>{{ $sesi->jam_mulai }}</td>
                                             <td>{{ $sesi->jam_selesai }}</td>
-                                            {{--  <td class="text-center">
-                                                @if ($jadwal->sesis()->count()> 0)
-                                                    <a href="{{ route('sesis',[$jadwal->id]) }}" class="btn btn-success btn-sm btn-flat">{{ $jadwal->sesis()->count() }}</a>
-                                                @else
-                                                    <a href="{{ route('sesis',[$jadwal->id]) }}" class="btn btn-danger btn-sm btn-flat">{{ $jadwal->sesis()->count() }}</a>
-                                                @endif
-                                            </td>  --}}
+
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
+                                                        <td>
+                                                        <a href="{{ route('sesis.edit',[$jadwal->id,$sesi->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                                        </td>
                                                         <td>
                                                         <form action="{{ route('sesis.delete',[$jadwal->id,$sesi->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
