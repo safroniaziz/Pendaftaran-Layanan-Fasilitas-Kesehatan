@@ -83,18 +83,21 @@
                                         <tr>
                                             <td>{{ $index+1 }}</td>
                                             <td>{{ $jadwal->nama_hari }}</td>
-                                            <td class="text-center">
+                                            <td>{{ $sesi->nama_sesi }}</td>
+                                            <td>{{ $sesi->jam_mulai }}</td>
+                                            <td>{{ $sesi->jam_selesai }}</td>
+                                            {{--  <td class="text-center">
                                                 @if ($jadwal->sesis()->count()> 0)
                                                     <a href="{{ route('sesis',[$jadwal->id]) }}" class="btn btn-success btn-sm btn-flat">{{ $jadwal->sesis()->count() }}</a>
                                                 @else
                                                     <a href="{{ route('sesis',[$jadwal->id]) }}" class="btn btn-danger btn-sm btn-flat">{{ $jadwal->sesis()->count() }}</a>
                                                 @endif
-                                            </td>
+                                            </td>  --}}
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                        <form action="{{ route('sesis.delete',[$jadwal->id]) }}" method="POST">
+                                                        <form action="{{ route('sesis.delete',[$jadwal->id,$sesi->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
                                                             </form>

@@ -26,7 +26,6 @@ class MitraController extends Controller
         ],$attributes);
 
         Mitra::create([
-            'mitra_id'      =>  Auth::user()->id,
             'nama_mitra'  =>  $request->nama_mitra,
             'tanggal_kerja_sama'  =>  $request->tanggal_kerja_sama,
             'status_kerja_sama'  =>  'aktif',

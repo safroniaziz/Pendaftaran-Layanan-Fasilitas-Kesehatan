@@ -5,11 +5,11 @@
     </a>
 </li>
 
-<li class="{{ set_active('roles') }}">
+{{--  <li class="{{ set_active('roles') }}">
     <a href="{{ route('roles') }}">
         <i class="fa fa-lock"></i> <span>Manajemen Akses</span>
     </a>
-</li>
+</li>  --}}
 <li class="{{ set_active('mitras') }}">
     <a href="{{ route('mitras') }}">
         <i class="fa fa-user"></i> <span>Semua Mitra</span>
@@ -27,11 +27,6 @@
     </a>
 </li>
 
-<li class="{{ set_active('mitras') }}">
-    <a href="{{ route('mitras') }}">
-        <i class="fa fa-user"></i> <span>Mitra</span>
-    </a>
-</li>
 
 <li class="">
     <a href="">

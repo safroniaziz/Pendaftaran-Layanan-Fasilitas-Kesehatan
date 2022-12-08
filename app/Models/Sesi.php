@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sesi extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    public function jadwal(){
+        return $this->belongsTo(Jadwal::class);
+    }
 }
