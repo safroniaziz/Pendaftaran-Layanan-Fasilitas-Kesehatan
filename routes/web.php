@@ -37,6 +37,9 @@ Route::controller(LayananController::class)->group(function(){
     Route::get('/manajemen_layanan','index')->name('layanans');
     Route::get('/manajemen_layanan/create','create')->name('layanans.create');
     Route::post('/manajemen_layanan','post')->name('layanans.post');
+    Route::get('/manajemen_layanan/{layanan}/edit','edit')->name('layanans.edit');
+    Route::patch('/manajemen_layanan/{layanan}/update','update')->name('layanans.update');
+    Route::delete('/manajemen_layanan/{layanan}/delete','delete')->name('layanans.delete');
 });
 
 Route::controller(RoleController::class)->group(function(){

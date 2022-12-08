@@ -44,9 +44,9 @@
 @endsection
 @push('styles')
     <style>
-        #chartdivperfakultas {
+        #chartdiv {
             width: 90%;
-            height: 350px;
+            height: 500px;
         }
     </style>
     <style>
@@ -54,65 +54,49 @@
     </style>
 @endpush
 @section('content')
-    <div class="row">
-        <div class="col-md-12 sm-6">
-            <div class="box box-primary">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Edit Data Layanan</h3>
 
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Layanan</h3>
-                    <div class="pull-right">
-                        <a href="{{ route('layanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Layanan</a>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>Berhasil :</strong>{{ $message }}
+                            </div>
+                            @elseif ($message = Session::get('error'))
+                                <div class="alert alert-danger alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Gagal :</strong>{{ $message }}
+                                </div>
+                                @else
+                        @endif
                     </div>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table table-hover table-bordered" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Layanan</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($layanans as $index=> $layanan)
-                                        <tr>
-                                            <td>{{ $index+1 }}</td>
-                                            <td>{{ $layanan->nama_layanan }}</td>
-                                            <td style="display:inline-block !important;">
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                        <a href="{{ route('layanans.edit',[$layanan->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                                        </td>
-                                                        <td>
-                                                        <form action="{{ route('layanans.delete',[$layanan->id]) }}" method="POST">
-                                                                {{ csrf_field() }} {{ method_field("DELETE") }}
-                                                                <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                    <form action="{{ route('layanans.update',[$layanan->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Masukan Nama Layanan</label>
+                            <input type="text" name="nama_layanan" value="{{ $layanan->nama_layanan }}" class="form-control" >
+                            <div>
+                                @if ($errors->has('nama_layanan'))
+                                    <small class="form-text text-danger">{{ $errors->first('nama_layanan') }}</small>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+                            <a href="{{ route('layanans') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
+                            <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                responsive : true,
-            });
-        } );
-    </script>
-@endpush

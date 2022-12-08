@@ -38,4 +38,39 @@ class LayananController extends Controller
         );
         return redirect()->route('layanans')->with($notification);
     }
+
+    public function edit(Layanan $layanan){
+        return view('layanans.edit',[
+            'layanan'  =>  $layanan,
+        ]);
+    }
+
+    public function update(Request $request, Layanan $layanan){
+        $attributes = [
+            'nama_layanan'      =>  'Nama Layanan',
+        ];
+        $this->validate($request, [
+            'nama_layanan'      =>  'required',
+        ],$attributes);
+
+        $layanan->update([
+            'nama_layanan'  =>  $request->nama_layanan,
+        ]);
+
+        $notification = array(
+            'message' => 'Berhasil, data layanan berhasil diubah!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('layanans')->with($notification);
+    }
+
+    public function delete(Layanan $layanan){
+        $layanan->delete();
+
+        $notification = array(
+            'message' => 'Berhasil, data layanan berhasil dihapus!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('layanans')->with($notification);
+    }
 }
