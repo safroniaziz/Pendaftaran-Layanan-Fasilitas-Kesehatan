@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +23,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::controller(MitraController::class)->group(function(){
-    Route::get('/semua_mitra','index')->name('mitra.index');
+    Route::get('/manajemen_data_mitra','index')->name('mitras');
+});
+
+Route::controller(LayananController::class)->group(function(){
+    Route::get('/manajemen_layanan','index')->name('layanans');
+    Route::get('/manajemen_layanan/create','create')->name('layanans.create');
+    Route::post('/manajemen_layanan','post')->name('layanans.post');
 });
 
 Route::controller(RoleController::class)->group(function(){
-    Route::get('/roles','index')->name('roles.index');
+    Route::get('/manajemen_akses','index')->name('roles');
 });
 

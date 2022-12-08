@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Evaluasi Mutu SDM | @yield('location')</title>
+  <title>Layanan FASKES | @yield('location')</title>
   <link rel="shortcut icon" href="{{ asset('assets/student/images/logo.png') }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -58,7 +58,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><i class="fa fa-home"></i></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" style="font-size:18px;"><b>Evaluasi Mutu SDM</b> UNIB </span>
+      <span class="logo-lg" style="font-size:18px;">LAYANAN<b> FASKES</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -77,7 +77,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user"></i>
                 <span class="hidden-xs">
-                    FAISAL HADI S.T, M.T
+                    {{ Auth::user()->nama_user }}
                 </span>
             </a>
 
@@ -133,8 +133,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Evaluasi Mutu SDM, Universitas Bengkulu
-        <small>PENJAMINAN MUTU BIDANG SUMBER DAYA MANUSIA</small>
+        Pendaftaran Layanan Fasilitas Kesehatan
+        <small>Klinik A Kota Bengkulu</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i> Evaluasi Mutu SDM</a></li>

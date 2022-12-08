@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mitra_id');
+            $table->unsignedBigInteger('layanan_id');
             $table->string('nama_hari');
             $table->timestamps();
 
             $table->foreign('mitra_id')->references('id')->on('mitras');
+            $table->foreign('layanan_id')->references('id')->on('layanans');
         });
     }
 

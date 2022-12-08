@@ -54,49 +54,41 @@
     </style>
 @endpush
 @section('content')
-    <div class="callout callout-info">
-        <h4>Selamat Datang <b>{{ Auth::user()->nama_user }}</b></h4>
-        <p>
-            Aplikasi Pendaftaran Layanan Kesehatan adalah aplikasi yang digunakan untuk mendaftar layanan kesehatan secara online, sehingga bisa mendapatkan nomor antrian dan jam layanan otomatis 
-            <br>
-            <i><b>Catatan</b>: Untuk keamanan, jangan lupa keluar setelah menggunakan aplikasi</i>
-        </p>
-    </div>
     <div class="row">
         <div class="col-md-12 sm-6">
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-bar-chart"></i>&nbsp;Grafik Perbandingan Data Dosen Universitas Bengkulu</h3>
+                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Layanan</h3>
+                    <div class="pull-right">
+                        <a href="{{ route('layanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Layanan</a>
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
-                        {{-- @include('lpmpp.grafik/dosen_per_fakultas')
-                        @include('lpmpp.grafik/dosen_per_jabatan')
-                        @include('lpmpp.grafik/dosen_per_jk')
-                        @include('lpmpp.grafik/dosen_per_golongan') --}}
+                        <div class="col-md-12">
+                            <table class="table table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Layanan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($layanans as $index=> $layanan)
+                                        <tr>
+                                            <td>{{ $index+1 }}</td>
+                                            <td>{{ $layanan->nama_layanan }}</td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-        
-    <div class="row">
-        <div class="col-md-12 sm-6">
-            <div class="box box-primary">
-
-                <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-pie-chart"></i>&nbsp; Grafik Perbandingan Data Tendik Universitas Bengkulu</h3>
-                </div>
-                <div class="box-body">
-                    {{-- @include('lpmpp.grafik/tendik_per_unit')
-                    @include('lpmpp.grafik/tendik_per_golongan')
-                    @include('lpmpp.grafik/tendik_per_kelas')
-                    @include('lpmpp.grafik/tendik_per_pangkat') --}}
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection

@@ -1,15 +1,29 @@
 <li class="header" style="font-weight:bold;">MENU UTAMA</li>
-<li class="">
-    <a href="">
+<li class="{{ set_active('dashboard') }}">
+    <a href="{{ route('dashboard') }}">
         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
     </a>
 </li>
-<li class="{{ set_active('administrator.mitra') }}">
-    <a href="{{ set_active('administrator.mitra') }}">
+
+<li class="{{ set_active('roles') }}">
+    <a href="{{ route('roles') }}">
+        <i class="fa fa-lock"></i> <span>Manajemen Akses</span>
+    </a>
+</li>
+
+<li class="{{ set_active('layanans') }}">
+    <a href="{{ route('layanans') }}">
+        <i class="fa fa-stethoscope"></i> <span>Manajemen Layanan</span>
+    </a>
+</li>
+
+<li class="{{ set_active('mitras') }}">
+    <a href="{{ route('mitras') }}">
         <i class="fa fa-user"></i> <span>Mitra</span>
     </a>
 </li>
-<li class="treeview {{ set_active(['lpmpp.dosen','lpmpp.tendik','lpmpp.dosen.add','lpmpp.dosen.edit','lpmpp.tendik.add','lpmpp.tendik.edit']) }}">
+
+{{-- <li class="treeview {{ set_active(['lpmpp.dosen','lpmpp.tendik','lpmpp.dosen.add','lpmpp.dosen.edit','lpmpp.tendik.add','lpmpp.tendik.edit']) }}">
     <a href="#">
         <i class="fa fa-users"></i> <span>Manajemen Data SDM</span>
         <span class="pull-right-container">
@@ -20,7 +34,7 @@
         <li class=""><a href=""><i class="fa fa-user"></i>Dosen</a></li>
         <li class=""><a href=""><i class="fa fa-user"></i>Tenaga Kependidikan</a></li>
     </ul>
-</li>
+</li> --}}
 
 <li class="">
     <a href="">

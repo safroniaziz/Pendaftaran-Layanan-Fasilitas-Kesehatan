@@ -44,9 +44,9 @@
 @endsection
 @push('styles')
     <style>
-        #chartdivperfakultas {
+        #chartdiv {
             width: 90%;
-            height: 350px;
+            height: 500px;
         }
     </style>
     <style>
@@ -54,49 +54,49 @@
     </style>
 @endpush
 @section('content')
-    <div class="callout callout-info">
-        <h4>Selamat Datang <b>{{ Auth::user()->nama_user }}</b></h4>
-        <p>
-            Aplikasi Pendaftaran Layanan Kesehatan adalah aplikasi yang digunakan untuk mendaftar layanan kesehatan secara online, sehingga bisa mendapatkan nomor antrian dan jam layanan otomatis 
-            <br>
-            <i><b>Catatan</b>: Untuk keamanan, jangan lupa keluar setelah menggunakan aplikasi</i>
-        </p>
-    </div>
-    <div class="row">
-        <div class="col-md-12 sm-6">
-            <div class="box box-primary">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Tambah Data Layanan</h3>
 
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-bar-chart"></i>&nbsp;Grafik Perbandingan Data Dosen Universitas Bengkulu</h3>
-                </div>
-                <div class="box-body">
-                    <div class="row">
-                        {{-- @include('lpmpp.grafik/dosen_per_fakultas')
-                        @include('lpmpp.grafik/dosen_per_jabatan')
-                        @include('lpmpp.grafik/dosen_per_jk')
-                        @include('lpmpp.grafik/dosen_per_golongan') --}}
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <strong>Berhasil :</strong>{{ $message }}
+                            </div>
+                            @elseif ($message = Session::get('error'))
+                                <div class="alert alert-danger alert-block">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Gagal :</strong>{{ $message }}
+                                </div>
+                                @else
+                        @endif
                     </div>
-                </div>
+                    <form action="{{ route('layanans.post') }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }} {{ method_field('POST') }}
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Masukan Nama Layanan</label>
+                            <input type="text" name="nama_layanan" class="form-control" >
+                            <div>
+                                @if ($errors->has('nama_layanan'))
+                                    <small class="form-text text-danger">{{ $errors->first('nama_layanan') }}</small>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+                            <a href="{{ route('layanans') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
+                            <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    
-        
-    <div class="row">
-        <div class="col-md-12 sm-6">
-            <div class="box box-primary">
-
-                <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-pie-chart"></i>&nbsp; Grafik Perbandingan Data Tendik Universitas Bengkulu</h3>
-                </div>
-                <div class="box-body">
-                    {{-- @include('lpmpp.grafik/tendik_per_unit')
-                    @include('lpmpp.grafik/tendik_per_golongan')
-                    @include('lpmpp.grafik/tendik_per_kelas')
-                    @include('lpmpp.grafik/tendik_per_pangkat') --}}
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection
