@@ -21,7 +21,21 @@
     </a>
 </li>
 
+<<<<<<< HEAD
 
+=======
+<li class="{{ set_active(['jadwals','jadwals.edit','jadwals.create']) }}">
+    <a href="{{ route('jadwals') }}">
+        <i class="fa fa-clock-o"></i> <span>Jadwal Pelayanan</span>
+    </a>
+</li>
+
+<li class="{{ set_active('mitras') }}">
+    <a href="{{ route('mitras') }}">
+        <i class="fa fa-user"></i> <span>Mitra</span>
+    </a>
+</li>
+>>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
 
 {{-- <li class="treeview {{ set_active(['lpmpp.dosen','lpmpp.tendik','lpmpp.dosen.add','lpmpp.dosen.edit','lpmpp.tendik.add','lpmpp.tendik.edit']) }}">
     <a href="#">

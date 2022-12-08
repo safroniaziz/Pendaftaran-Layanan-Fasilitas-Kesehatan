@@ -10,4 +10,8 @@ class Layanan extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function jadwals(){
+        return $this->hasManyThrough(Jadwal::class, Sesi::class);
+    }
 }

@@ -59,45 +59,29 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-<<<<<<< HEAD
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Layanan</h3>
+                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Sesi Pelayanan <b>{{ $jadwal->layanan->nama_layanan }}</b></h3>
                     <div class="pull-right">
-                        <a href="{{ route('layanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Layanan</a>
-=======
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Jadwal Pelayanan</h3>
-                    <div class="pull-right">
-                        <a href="{{ route('jadwals.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Jadwal Pelayanan</a>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
+                        <a href="{{ route('sesis.create',[$jadwal->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Sesi</a>
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover table-bordered" id="table">
+                            <table class="table table-hover table-bordered" id="table" style="width: 100%">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-<<<<<<< HEAD
-                                        <th>Nama Layanan</th>
-=======
-                                        <th>Nama Pelayanan</th>
                                         <th>Hari Pelayanan</th>
-                                        <th class="text-center">Sesi Pelayanan</th>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
+                                        <th>Sesi Pelayanan</th>
+                                        <th>Jam Mulai</th>
+                                        <th>Jam Selesai</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-<<<<<<< HEAD
-                                    @foreach ($layanans as $index=> $layanan)
+                                    @foreach ($sesis as $index=> $sesi)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $layanan->nama_layanan }}</td>
-=======
-                                    @foreach ($jadwals as $index=> $jadwal)
-                                        <tr>
-                                            <td>{{ $index+1 }}</td>
-                                            <td>{{ $jadwal->layanan->nama_layanan }}</td>
                                             <td>{{ $jadwal->nama_hari }}</td>
                                             <td class="text-center">
                                                 @if ($jadwal->sesis()->count()> 0)
@@ -106,19 +90,11 @@
                                                     <a href="{{ route('sesis',[$jadwal->id]) }}" class="btn btn-danger btn-sm btn-flat">{{ $jadwal->sesis()->count() }}</a>
                                                 @endif
                                             </td>
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
                                                         <td>
-<<<<<<< HEAD
-                                                        <a href="{{ route('layanans.edit',[$layanan->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
-                                                        </td>
-                                                        <td>
-                                                        <form action="{{ route('layanans.delete',[$layanan->id]) }}" method="POST">
-=======
-                                                        <form action="{{ route('jadwals.delete',[$jadwal->id]) }}" method="POST">
->>>>>>> 1daea963942001d0bc2c991593bf2b77c2fe2a26
+                                                        <form action="{{ route('sesis.delete',[$jadwal->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
                                                             </form>
