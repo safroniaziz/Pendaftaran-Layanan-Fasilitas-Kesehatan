@@ -17,9 +17,9 @@
     </a>
 </li>
 
-<li class="{{ set_active('mitras') }}">
-    <a href="{{ route('mitras') }}">
-        <i class="fa fa-user"></i> <span>Mitra</span>
+<li class="{{ set_active('semua_mitra') }}">
+    <a href="{{ route('semua_mitra') }}">
+        <i class="fa fa-user"></i> <span>Semua Mitra</span>
     </a>
 </li>
 

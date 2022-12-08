@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\MitraController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +28,9 @@ Auth::routes();
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::controller(MitraController::class)->group(function(){
-    Route::get('/manajemen_data_mitra','index')->name('mitras');
+    Route::get('/manajemen_data_mitra','index')->name('semua_mitra');
+    Route::get('/manajemen_data_mitra/create','create')->name('semua_mitra.create');
+    Route::post('/manajemen_data_mitra','post')->name('semua_mitra.post');
 });
 
 Route::controller(LayananController::class)->group(function(){
