@@ -6,6 +6,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\AlurLayananController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,15 @@ Route::controller(JadwalPelayananController::class)->group(function(){
         Route::get('{jadwal}/edit/{sesi}','edit')->name('sesis.edit');
         Route::patch('{jadwal}/update/{sesi}','update')->name('sesis.update');
         Route::delete('{jadwal}/delete/{sesi}','delete')->name('sesis.delete');
+    });
+
+    Route::controller(AlurLayananController::class)->group(function(){
+        Route::get('/manajemen_alur_layanan','index')->name('alurlayanans');
+        Route::get('/manajemen_alur_layanan/create','create')->name('alurlayanans.create');
+        Route::post('/manajemen_alur_layanan','post')->name('alurlayanans.post');
+        Route::get('/manajemen_alur_layanan/{alurlayanan}/edit','edit')->name('alurlayanans.edit');
+        Route::patch('/manajemen_alur_layanan/{alurlayanan}/update','update')->name('alurlayanans.update');
+        Route::delete('/manajemen_alur_layanan/{alurlayanan}/delete','delete')->name('alurlayanans.delete');
     });
 
 });

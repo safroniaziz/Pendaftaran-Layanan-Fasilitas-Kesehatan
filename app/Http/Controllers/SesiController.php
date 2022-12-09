@@ -63,7 +63,10 @@ class SesiController extends Controller
             'nama_hari'      =>  'Nama Hari',
         ];
         $this->validate($request, [
-
+            'jadwal_id'      =>  'required',
+            'jam_mulai'      =>  'required',
+            'jam_selesai'      =>  'required',
+            'nama_sesi'      =>  'required',
         ],$attributes);
 
         $sesi->update([
