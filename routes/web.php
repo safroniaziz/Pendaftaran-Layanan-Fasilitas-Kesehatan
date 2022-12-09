@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalPelayananController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
@@ -26,6 +27,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/daftar', [HomeController::class, 'daftar'])->name('daftar');
 
 Route::controller(MitraController::class)->group(function(){
     Route::get('/manajemen_data_mitra','index')->name('mitras');
@@ -53,7 +55,6 @@ Route::controller(JadwalPelayananController::class)->group(function(){
         Route::get('{jadwal}/sesi/create','create')->name('sesis.create');
         Route::post('{jadwal}/sesi','post')->name('sesis.post');
     });
-
 });
 
 
