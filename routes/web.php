@@ -7,6 +7,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\AlurLayananController;
+use App\Http\Controllers\SyaratPendaftaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -73,5 +74,13 @@ Route::controller(JadwalPelayananController::class)->group(function(){
         Route::delete('/manajemen_alur_layanan/{alurlayanan}/delete','delete')->name('alurlayanans.delete');
     });
 
+    Route::controller(SyaratPendaftaranController::class)->group(function(){
+        Route::get('/manajemen_syarat_pendaftaran','index')->name('syaratpendaftarans');
+        Route::get('/manajemen_syarat_pendaftaran/create','create')->name('syaratpendaftarans.create');
+        Route::post('/manajemen_syarat_pendaftaran','post')->name('syaratpendaftarans.post');
+        Route::get('/manajemen_syarat_pendaftaran/{syaratpendaftaran}/edit','edit')->name('syaratpendaftarans.edit');
+        Route::patch('/manajemen_syarat_pendaftaran/{syaratpendaftaran}/update','update')->name('syaratpendaftarans.update');
+        Route::delete('/manajemen_syarat_pendaftaran/{syaratpendaftaran}/delete','delete')->name('syaratpendaftarans.delete');
+    });
 });
 

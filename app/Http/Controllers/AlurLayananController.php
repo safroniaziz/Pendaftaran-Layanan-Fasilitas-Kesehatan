@@ -38,13 +38,13 @@ class AlurLayananController extends Controller
         return redirect()->route('alurlayanans')->with($notification);
     }
 
-    public function edit(alurLayanan $alurlayanan){
+    public function edit(AlurLayanan $alurlayanan){
         return view('alurlayanans.edit',[
             'alurlayanan'  =>  $alurlayanan,
         ]);
     }
 
-    public function update(Request $request, alurLayanan $alurlayanan){
+    public function update(Request $request, AlurLayanan $alurlayanan){
         $attributes = [
             'nama_alur_layanan'      =>  'Nama alur Layanan',
         ];
@@ -63,7 +63,7 @@ class AlurLayananController extends Controller
         return redirect()->route('alurlayanans')->with($notification);
     }
 
-    public function delete(alurLayanan $alurlayanan){
+    public function delete(AlurLayanan $alurlayanan){
         $alurlayanan->delete();
 
         $notification = array(
