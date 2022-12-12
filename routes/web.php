@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalPelayananController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SesiController;
+use App\Models\Mitra;
 use App\Http\Controllers\AlurLayananController;
 use App\Http\Controllers\DetailAlurLayananController;
 use App\Http\Controllers\SyaratPendaftaranController;
@@ -25,12 +27,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $mitras = Mitra::orderBy('id','asc')->get();
+    return view('welcome',[
+        'mitras'    =>  $mitras,
+    ]);
+})->name('welcome');
 
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/daftar', [HomeController::class, 'daftar'])->name('daftar');
 
 Route::controller(MitraController::class)->group(function(){
     Route::get('/manajemen_data_mitra','index')->name('mitras');
