@@ -59,9 +59,9 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Alur Layanan</h3>
+                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Syarat Pendaftaran</h3>
                     <div class="pull-right">
-                        <a href="{{ route('alurlayanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Alur Layanan</a>
+                        <a href="{{ route('pendaftars.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Pendaftar</a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -71,31 +71,35 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Layanan</th>
-                                        <th>Detail Alur Layanan</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>NIK</th>
+                                        <th>Alamat</th>
+                                        <th>Nomor HP</th>
+                                        <th>Umur</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Keluhan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($alurlayanans as $index=> $alurlayanan)
+                                    @foreach ($pendaftars as $index=> $pendaftar)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $alurlayanan->nama_alur_layanan }}</td>
-                                            <td class="text-center">
-                                                @if ($alurlayanan->detailalurlayanans()->count()> 0)
-                                                    <a href="{{ route('detailalurlayanans',[$alurlayanan->id]) }}" class="btn btn-success btn-sm btn-flat">{{ $alurlayanan->detailalurlayanans()->count() }}</a>
-                                                @else
-                                                    <a href="{{ route('detailalurlayanans',[$alurlayanan->id]) }}" class="btn btn-danger btn-sm btn-flat">{{ $alurlayanan->detailalurlayanans()->count() }}</a>
-                                                @endif
-                                            </td>
+                                            <td>{{ $pendaftar->nama_lengkap }}</td>
+                                            <td>{{ $pendaftar->nik }}</td>
+                                            <td>{{ $pendaftar->alamat }}</td>
+                                            <td>{{ $pendaftar->no_hp }}</td>
+                                            <td>{{ $pendaftar->umur }}</td>
+                                            <td>{{ $pendaftar->jenis_kelamin }}</td>
+                                            <td>{{ $pendaftar->keluhan }}</td>
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                        <a href="{{ route('alurlayanans.edit',[$alurlayanan->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                                        <a href="{{ route('pendaftars.edit',[$pendaftar->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
                                                         </td>
                                                         <td>
-                                                        <form action="{{ route('alurlayanans.delete',[$alurlayanan->id]) }}" method="POST">
+                                                        <form action="{{ route('pendaftars.delete',[$pendaftar->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
                                                             </form>
