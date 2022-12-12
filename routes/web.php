@@ -6,6 +6,7 @@ use App\Http\Controllers\JadwalPelayananController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SesiController;
+use App\Models\Mitra;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $mitras = Mitra::orderBy('id','asc')->get();
+    return view('welcome',[
+        'mitras'    =>  $mitras,
+    ]);
+})->name('welcome');
 
 Auth::routes();
 

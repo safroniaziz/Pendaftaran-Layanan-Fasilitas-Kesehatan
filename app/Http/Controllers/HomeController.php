@@ -4,41 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
     public function daftar(Request $request){
-        $messages = [
-            'required' => ':attribute harus diisi',
-            'numeric' => ':attribute harus berisi angka',
-        ];
-        $attributes = [
-            'nama_lengkap'      =>  'Nama Lengkap',
-            'nik'               =>  'Nomor Induk Keluarga',
-            'alamat'            =>  'Alamat Lengkap',
-            'no_hp'             =>  'Nomor Telephone',
-            'umur'              =>  'Umur',
-            'jenis_kelamin'     =>  'Jenis Kelamin',
-            'keluhan'           =>  'Keluhan',
-        ];
-        $this->validate($request, [
+        $rules = [
+            'mitra_id'          =>  'required',
             'nama_lengkap'      =>  'required',
-            'nik'               =>  'required',
+            'nik'               =>  'required|numeric',
             'alamat'            =>  'required',
-            'no_hp'             =>  'required',
-            'umur'              =>  'required',
+            'no_hp'             =>  'required|numeric',
+            'umur'              =>  'required|numeric',
             'jenis_kelamin'     =>  'required',
             'keluhan'           =>  'required',
-        ],$messages,$attributes);
+        ];
+        $text = [
+            'mitra_id.required'          =>  'Tempat Pelayanan Kesehatan Harus Dipilih',
+            'nama_lengkap.required'      =>  'Nama Lengkap Tidak Boleh Kosong',
+            'nik.numeric'                =>  'Harap Masukan Angka Di Bagian Nomor Induk Keluarga',
+            'nik.required'               =>  'Nomor Induk Keluarga Tidak Boleh Kosong',
+            'alamat.required'            =>  'Alamat Lengkap Tidak Boleh Kosong',
+            'no_hp.numeric'              =>  'Harap Masukan Angka Di Bagian Nomor Telephone',
+            'no_hp.required'             =>  'Nomor Telephone Tidak Boleh Kosong',
+            'umur.numeric'               =>  'Harap Masukan Angka Di Bagian Umur',
+            'umur.required'              =>  'Umur Tidak Boleh Kosong',
+            'jenis_kelamin.required'     =>  'Jenis Kelamin Harus Dipilih',
+            'keluhan.required'           =>  'Keluhan Tidak Boleh Kosong',
+        ];
 
-        Pendaftar::create([
-            'nama_lengkap'      =>  $request->nama_lengkap,
-            'nik'               =>  $request->nik,
-            'alamat'            =>  $request->alamat,
-            'no_hp'             =>  $request->no_hp,
-            'umur'              =>  $request->umur,
-            'jenis_kelamin'     =>  $request->jenis_kelamin,
-            'keluhan'           =>  $request->keluhan,
-        ]);
+        $validasi = Validator::make($request->all(), $rules, $text);
+        if ($validasi->fails()) {
+            return response()->json(['error'  =>  0, 'text'   =>  $validasi->errors()->first()],422);
+        }
+
+        $simpan = Pendaftar::create($request->all());
+        if ($simpan) {
+            return response()->json(['text' =>  'Selamat, Pendaftaran Anda Behasil']);
+        }else {
+            return response()->json(['text' =>  'Oopps, Pendaftaran Anda Gagal']);
+        }
     }
 }
