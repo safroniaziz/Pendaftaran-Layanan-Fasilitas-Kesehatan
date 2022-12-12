@@ -45,6 +45,8 @@ Route::controller(MitraController::class)->group(function(){
     Route::get('/manajemen_data_mitra/{mitra}/edit','edit')->name('mitras.edit');
     Route::patch('/manajemen_data_mitra/{mitra}/update','update')->name('mitras.update');
     Route::delete('/manajemen_data_mitra/{mitra}/delete','delete')->name('mitras.delete');
+    Route::patch('/{id}/nonaktifkan_status',[MitraController::class, 'nonaktifkanStatus'])->name('mitras.nonaktifkan_status');
+    Route::patch('/{id}/aktifkan_status',[MitraController::class, 'aktifkanStatus'])->name('mitras.aktifkan_status');
 });
 
 Route::controller(LayananController::class)->group(function(){

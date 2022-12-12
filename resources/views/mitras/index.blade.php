@@ -83,7 +83,19 @@
                                             <td>{{ $index+1 }}</td>
                                             <td>{{ $mitra->nama_mitra }}</td>
                                             <td>{{ $mitra->tanggal_kerja_sama }}</td>
-                                            <td>{{ $mitra->status_kerja_sama }}</td>
+                                            <td>
+                                                @if ($mitra->status_kerja_sama == 'tidak_aktif')
+                                                    <form action="{{ route('mitras.aktifkan_status',[$mitra->id]) }}" method="post">
+                                                        {{ csrf_field() }} {{ method_field("PATCH") }}
+                                                        <button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-thumbs-down"></i>&nbsp; Tidak Aktif</button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('mitras.nonaktifkan_status',[$mitra->id]) }}" method="post">
+                                                        {{ csrf_field() }} {{ method_field("PATCH") }}
+                                                        <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-thumbs-up"></i>&nbsp;Aktif</button>
+                                                    </form>
+                                                @endif
+                                            </td>
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
