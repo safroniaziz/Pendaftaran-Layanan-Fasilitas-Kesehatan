@@ -5,8 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JadwalPelayananController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SesiController;
 use App\Models\Mitra;
+use App\Http\Controllers\AlurLayananController;
+use App\Http\Controllers\SyaratPendaftaranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +38,11 @@ Route::post('/daftar', [HomeController::class, 'daftar'])->name('daftar');
 
 Route::controller(MitraController::class)->group(function(){
     Route::get('/manajemen_data_mitra','index')->name('mitras');
+    Route::get('/manajemen_data_mitra/create','create')->name('mitras.create');
+    Route::post('/manajemen_data_mitra','post')->name('mitras.post');
+    Route::get('/manajemen_data_mitra/{mitra}/edit','edit')->name('mitras.edit');
+    Route::patch('/manajemen_data_mitra/{mitra}/update','update')->name('mitras.update');
+    Route::delete('/manajemen_data_mitra/{mitra}/delete','delete')->name('mitras.delete');
 });
 
 Route::controller(LayananController::class)->group(function(){
@@ -58,11 +66,27 @@ Route::controller(JadwalPelayananController::class)->group(function(){
         Route::get('{jadwal}/sesi','index')->name('sesis');
         Route::get('{jadwal}/sesi/create','create')->name('sesis.create');
         Route::post('{jadwal}/sesi','post')->name('sesis.post');
+        Route::get('{jadwal}/edit/{sesi}','edit')->name('sesis.edit');
+        Route::patch('{jadwal}/update/{sesi}','update')->name('sesis.update');
+        Route::delete('{jadwal}/delete/{sesi}','delete')->name('sesis.delete');
     });
-});
 
+    Route::controller(AlurLayananController::class)->group(function(){
+        Route::get('/manajemen_alur_layanan','index')->name('alurlayanans');
+        Route::get('/manajemen_alur_layanan/create','create')->name('alurlayanans.create');
+        Route::post('/manajemen_alur_layanan','post')->name('alurlayanans.post');
+        Route::get('/manajemen_alur_layanan/{alurlayanan}/edit','edit')->name('alurlayanans.edit');
+        Route::patch('/manajemen_alur_layanan/{alurlayanan}/update','update')->name('alurlayanans.update');
+        Route::delete('/manajemen_alur_layanan/{alurlayanan}/delete','delete')->name('alurlayanans.delete');
+    });
 
-Route::controller(RoleController::class)->group(function(){
-    Route::get('/manajemen_akses','index')->name('roles');
+    Route::controller(SyaratPendaftaranController::class)->group(function(){
+        Route::get('/manajemen_syarat_pendaftaran','index')->name('syaratpendaftarans');
+        Route::get('/manajemen_syarat_pendaftaran/create','create')->name('syaratpendaftarans.create');
+        Route::post('/manajemen_syarat_pendaftaran','post')->name('syaratpendaftarans.post');
+        Route::get('/manajemen_syarat_pendaftaran/{syaratpendaftaran}/edit','edit')->name('syaratpendaftarans.edit');
+        Route::patch('/manajemen_syarat_pendaftaran/{syaratpendaftaran}/update','update')->name('syaratpendaftarans.update');
+        Route::delete('/manajemen_syarat_pendaftaran/{syaratpendaftaran}/delete','delete')->name('syaratpendaftarans.delete');
+    });
 });
 

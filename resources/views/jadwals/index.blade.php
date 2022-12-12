@@ -94,6 +94,9 @@
                                                 <table>
                                                     <tr>
                                                         <td>
+                                                            <a href="{{ route('jadwals.edit',[$jadwal->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                                        </td>
+                                                        <td>
                                                         <form action="{{ route('jadwals.delete',[$jadwal->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>

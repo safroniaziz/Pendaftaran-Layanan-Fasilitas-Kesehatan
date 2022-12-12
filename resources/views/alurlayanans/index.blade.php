@@ -59,42 +59,35 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Sesi Pelayanan <b>{{ $jadwal->layanan->nama_layanan }}</b></h3>
+                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Alur Layanan</h3>
                     <div class="pull-right">
-                        <a href="{{ route('sesis.create',[$jadwal->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Sesi</a>
+                        <a href="{{ route('alurlayanans.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Alur Layanan</a>
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-hover table-bordered" id="table" style="width: 100%">
+                            <table class="table table-hover table-bordered" id="table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Hari Pelayanan</th>
-                                        <th>Sesi Pelayanan</th>
-                                        <th>Jam Mulai</th>
-                                        <th>Jam Selesai</th>
+                                        <th>Nama Layanan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($sesis as $index=> $sesi)
+                                    @foreach ($alurlayanans as $index=> $alurlayanan)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $jadwal->nama_hari }}</td>
-                                            <td>{{ $sesi->nama_sesi }}</td>
-                                            <td>{{ $sesi->jam_mulai }}</td>
-                                            <td>{{ $sesi->jam_selesai }}</td>
-
+                                            <td>{{ $alurlayanan->nama_alur_layanan }}</td>
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                        <a href="{{ route('sesis.edit',[$jadwal->id,$sesi->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                                        <a href="{{ route('alurlayanans.edit',[$alurlayanan->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
                                                         </td>
                                                         <td>
-                                                        <form action="{{ route('sesis.delete',[$jadwal->id,$sesi->id]) }}" method="POST">
+                                                        <form action="{{ route('alurlayanans.delete',[$alurlayanan->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
                                                             </form>

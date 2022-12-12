@@ -77,20 +77,43 @@
                                 @else
                         @endif
                     </div>
-                    <form action="{{ route('jadwals.update',[$layanan->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('sesis.update',[$jadwal->id,$sesi->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
                         <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Masukan Nama Layanan</label>
-                            <input type="text" name="nama_layanan" value="{{ $layanan->nama_layanan }}" class="form-control" >
-                            <div>
-                                @if ($errors->has('nama_layanan'))
-                                    <small class="form-text text-danger">{{ $errors->first('nama_layanan') }}</small>
-                                @endif
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Jadwal <a class="text-danger"></a></label>
+                                <input type="text" name="jadwal_id" value="{{ $jadwal->nama_hari }}" class="form-control" disabled>
                             </div>
-                        </div>
 
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Nama Sesi <a class="text-danger">contoh : sesi 1</a></label>
+                                <input type="text" name="nama_sesi" value="{{ $sesi->nama_sesi }}" class="form-control">
+                                <div>
+                                    @if ($errors->has('nama_sesi'))
+                                        <small class="form-text text-danger">{{ $errors->first('nama_sesi') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Jam Mulai</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="time" value="{{ $sesi->jam_mulai }}" name="jam_mulai" id="jam_mulai" class="form-control pull-right">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Jam Selesai</label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="time" value="{{ $sesi->jam_selesai }}" name="jam_selesai" id="jam_selesai" class="form-control pull-right">
+                                </div>
+                            </div>
                         <div class="col-md-12 text-center">
-                            <a href="{{ route('jadwals') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('sesis',[$jadwal->id,$sesi->id]) }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
                         </div>

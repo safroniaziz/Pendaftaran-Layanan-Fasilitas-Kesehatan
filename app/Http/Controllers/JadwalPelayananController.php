@@ -50,22 +50,27 @@ class JadwalPelayananController extends Controller
         return redirect()->route('jadwals')->with($notification);
     }
 
-    public function edit(Jadwal $layanan){
+    public function edit(Jadwal $jadwal, Layanan $layanan){
+        $layanans = Layanan::where('mitra_id',Auth::user()->id)->get();
         return view('jadwals.edit',[
             'layanan'  =>  $layanan,
+            'jadwal'  =>  $jadwal,
+            'layanans' => $layanans
         ]);
     }
-
-    public function update(Request $request, Jadwal $layanan){
+    public function update(Request $request, Jadwal $jadwal, Layanan $layanan){
         $attributes = [
             'nama_layanan'      =>  'Nama Layanan',
         ];
         $this->validate($request, [
-            'nama_layanan'      =>  'required',
+            'layanan_id'      =>  'required',
+            'nama_hari'      =>  'required',
         ],$attributes);
 
-        $layanan->update([
-            'nama_layanan'  =>  $request->nama_layanan,
+        $jadwal->update([
+            'mitra_id'          =>  Auth::user()->id,
+            'layanan_id'         =>  $request->layanan_id,
+            'nama_hari'         =>  $request->nama_hari,
         ]);
 
         $notification = array(
@@ -74,9 +79,8 @@ class JadwalPelayananController extends Controller
         );
         return redirect()->route('jadwals')->with($notification);
     }
-
-    public function delete(Jadwal $layanan){
-        $layanan->delete();
+    public function delete(Jadwal $jadwal, Layanan $layanan){
+        $jadwal->delete();
 
         $notification = array(
             'message' => 'Berhasil, data layanan berhasil dihapus!',

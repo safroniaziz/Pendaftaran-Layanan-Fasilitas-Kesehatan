@@ -5,12 +5,16 @@
     </a>
 </li>
 
-<li class="{{ set_active('roles') }}">
+{{--  <li class="{{ set_active('roles') }}">
     <a href="{{ route('roles') }}">
         <i class="fa fa-lock"></i> <span>Manajemen Akses</span>
     </a>
+</li>  --}}
+<li class="{{ set_active('mitras') }}">
+    <a href="{{ route('mitras') }}">
+        <i class="fa fa-user"></i> <span>Semua Mitra</span>
+    </a>
 </li>
-
 <li class="{{ set_active('layanans') }}">
     <a href="{{ route('layanans') }}">
         <i class="fa fa-stethoscope"></i> <span>Manajemen Layanan</span>
@@ -22,25 +26,16 @@
         <i class="fa fa-clock-o"></i> <span>Jadwal Pelayanan</span>
     </a>
 </li>
-
-<li class="{{ set_active('mitras') }}">
-    <a href="{{ route('mitras') }}">
-        <i class="fa fa-user"></i> <span>Mitra</span>
+<li class="{{ set_active('alurlayanans') }}">
+    <a href="{{ route('alurlayanans') }}">
+        <i class="fa fa-stethoscope"></i> <span> Alur Layanan</span>
     </a>
 </li>
-
-{{-- <li class="treeview {{ set_active(['lpmpp.dosen','lpmpp.tendik','lpmpp.dosen.add','lpmpp.dosen.edit','lpmpp.tendik.add','lpmpp.tendik.edit']) }}">
-    <a href="#">
-        <i class="fa fa-users"></i> <span>Manajemen Data SDM</span>
-        <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-        </span>
+<li class="{{ set_active('syaratpendaftarans') }}">
+    <a href="{{ route('syaratpendaftarans') }}">
+        <i class="fa fa-stethoscope"></i> <span> Syarat Pendaftaran</span>
     </a>
-    <ul class="treeview-menu " style="padding-left:25px;">
-        <li class=""><a href=""><i class="fa fa-user"></i>Dosen</a></li>
-        <li class=""><a href=""><i class="fa fa-user"></i>Tenaga Kependidikan</a></li>
-    </ul>
-</li> --}}
+</li>
 
 <li class="">
     <a href="">
