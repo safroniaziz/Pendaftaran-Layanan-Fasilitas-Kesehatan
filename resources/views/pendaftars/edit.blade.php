@@ -77,20 +77,77 @@
                                 @else
                         @endif
                     </div>
-                    <form action="{{ route('syaratpendaftarans.update',[$syaratpendaftaran->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pendaftars.update',[$pendaftar->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }} {{ method_field('PATCH') }}
-                        <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Masukan Syarat Pendaftaran</label>
-                            <input type="text" name="syarat_pendaftaran" value="{{ $syaratpendaftaran->syarat_pendaftaran }}" class="form-control" >
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" value="{{ $pendaftar->nama_lengkap }}" class="form-control" >
                             <div>
-                                @if ($errors->has('syarat_pendaftaran'))
-                                    <small class="form-text text-danger">{{ $errors->first('syarat_pendaftaran') }}</small>
+                                @if ($errors->has('nama_lengkap'))
+                                    <small class="form-text text-danger">{{ $errors->first('nama_lengkap') }}</small>
                                 @endif
                             </div>
                         </div>
-
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan NIK</label>
+                            <input type="text" name="nik" value="{{ $pendaftar->nik }}" class="form-control" >
+                            <div>
+                                @if ($errors->has('nik'))
+                                    <small class="form-text text-danger">{{ $errors->first('nik') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Alamat</label>
+                            <input type="text" name="alamat" value="{{ $pendaftar->alamat }}" class="form-control" >
+                            <div>
+                                @if ($errors->has('alamat'))
+                                    <small class="form-text text-danger">{{ $errors->first('alamat') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Nomor HP</label>
+                            <input type="text" name="no_hp" value="{{ $pendaftar->no_hp }}" class="form-control" >
+                            <div>
+                                @if ($errors->has('no_hp'))
+                                    <small class="form-text text-danger">{{ $errors->first('no_hp') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan umur</label>
+                            <input type="number" name="umur" value="{{ $pendaftar->umur }}" class="form-control" >
+                            <div>
+                                @if ($errors->has('umur'))
+                                    <small class="form-text text-danger">{{ $errors->first('umur') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Pilih Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="form-control">
+                                <option disabled selected>-- Pilih Jenis Kelamin --</option>
+                                <option value="L">Laki-Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            <div>
+                                @if ($errors->has('jenis_kelamin'))
+                                    <small class="form-text text-danger">{{ $errors->first('jenis_kelamin') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Keluhan</label>
+                            <input type="text" name="keluhan" value="{{ $pendaftar->keluhan }}" class="form-control" >
+                            <div>
+                                @if ($errors->has('keluhan'))
+                                    <small class="form-text text-danger">{{ $errors->first('keluhan') }}</small>
+                                @endif
+                            </div>
+                        </div>
                         <div class="col-md-12 text-center">
-                            <a href="{{ route('syaratpendaftarans') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('pendaftars') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
                         </div>
