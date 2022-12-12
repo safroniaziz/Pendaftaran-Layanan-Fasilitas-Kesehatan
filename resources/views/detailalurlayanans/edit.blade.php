@@ -9,7 +9,7 @@
     @endif
 @endsection
 @section('halaman')
-    Halaman Administrator
+    Halaman LPMPP
 @endsection
 @section('content-title')
     Dashboard
@@ -58,7 +58,7 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Tambah Data Jadwal Pelayanan</h3>
+                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Edit Data alurlayanan Pelayanan</h3>
 
             </div>
             <div class="box-body">
@@ -77,43 +77,25 @@
                                 @else
                         @endif
                     </div>
-                    <form action="{{ route('jadwals.post') }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }} {{ method_field('POST') }}
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Pilih Layanan</label>
-                            <select name="layanan_id" class="form-control">
-                                <option disabled selected>-- pilih layanan --</option>
-                                @foreach ($layanans as $pelayanan)
-                                    <option value="{{ $pelayanan->id }}">{{ $pelayanan->nama_layanan }}</option>
-                                @endforeach
-                            </select>
-                            <div>
-                                @if ($errors->has('layanan_id'))
-                                    <small class="form-text text-danger">{{ $errors->first('layanan_id') }}</small>
-                                @endif
+                    <form action="{{ route('detailalurlayanans.update',[$alurlayanan->id,$detailalurlayanan->id]) }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }} {{ method_field('PATCH') }}
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">alurlayanan <a class="text-danger"></a></label>
+                                <input type="text" name="alur_layanan_id" value="{{ $alurlayanan->nama_alur_layanan }}" class="form-control" disabled>
                             </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Pilih Hari Pelayanan</label>
-                            <select name="nama_hari" class="form-control">
-                                <option disabled selected>-- pilih nama hari --</option>
-                                <option value="Senin">Senin</option>
-                                <option value="Selasa">Selasa</option>
-                                <option value="Rabu">Rabu</option>
-                                <option value="Kamis">Kamis</option>
-                                <option value="Jumat">Jumat</option>
-                                <option value="Sabtu">Sabtu</option>
-                                <option value="Minggu">Minggu</option>
-                            </select>
-                            <div>
-                                @if ($errors->has('nama_hari'))
-                                    <small class="form-text text-danger">{{ $errors->first('nama_hari') }}</small>
-                                @endif
-                            </div>
-                        </div>
 
+                            <div class="form-group col-md-6">
+                                <label for="exampleInputEmail1">Detail Alur Layanan <a class="text-danger"></a></label>
+                                <input type="text" name="detail_alur_layanan" value="{{ $detailalurlayanan->detail_alur_layanan }}" class="form-control">
+                                <div>
+                                    @if ($errors->has('detail_alur_layanan'))
+                                        <small class="form-text text-danger">{{ $errors->first('detail_alur_layanan') }}</small>
+                                    @endif
+                                </div>
+                            </div>
                         <div class="col-md-12 text-center">
-                            <a href="{{ route('jadwals') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('detailalurlayanans',[$alurlayanan->id,$detailalurlayanan->id]) }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
                         </div>

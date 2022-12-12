@@ -39,6 +39,8 @@ class PendaftarController extends Controller
             'no_hp'         =>  $request->no_hp,
             'umur'          =>  $request->umur,
             'jenis_kelamin' =>  $request->jenis_kelamin,
+            'keluhan'       =>  $request->keluhan,
+
         ]);
 
         $notification = array(
@@ -74,6 +76,8 @@ class PendaftarController extends Controller
             'no_hp'         =>  $request->no_hp,
             'umur'          =>  $request->umur,
             'jenis_kelamin' =>  $request->jenis_kelamin,
+            'keluhan'       =>  $request->keluhan,
+
         ]);
 
         $notification = array(

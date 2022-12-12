@@ -26,13 +26,15 @@ class MitraController extends Controller
         ],$attributes);
 
         Mitra::create([
-            'nama_mitra'  =>  $request->nama_mitra,
+            'nama_mitra'          =>  $request->nama_mitra,
             'tanggal_kerja_sama'  =>  $request->tanggal_kerja_sama,
-            'status_kerja_sama'  =>  'aktif',
+            'status_kerja_sama'   =>  'aktif',
+            'lokasi'              =>  $request->lokasi,
+
         ]);
 
         $notification = array(
-            'message' => 'Berhasil, data mitra berhasil ditambahkan!',
+            'message'    => 'Berhasil, data mitra berhasil ditambahkan!',
             'alert-type' => 'success'
         );
         return redirect()->route('mitras')->with($notification);
@@ -53,8 +55,9 @@ class MitraController extends Controller
         ],$attributes);
 
         $mitra->update([
-            'nama_mitra'  =>  $request->nama_mitra,
+            'nama_mitra'          =>  $request->nama_mitra,
             'tanggal_kerja_sama'  =>  $request->tanggal_kerja_sama,
+            'lokasi'              =>  $request->lokasi,
         ]);
 
         $notification = array(
@@ -69,6 +72,29 @@ class MitraController extends Controller
 
         $notification = array(
             'message' => 'Berhasil, data mitra berhasil dihapus!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('mitras')->with($notification);
+    }
+    public function nonaktifkanStatus($id){
+        Mitra::where('id',$id)->update([
+            'status_kerja_sama'    =>  'tidak_aktif'
+        ]);
+
+        $notification = array(
+            'message' => 'Berhasil, Mitra berhasil dinonaktifkan!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('mitras')->with($notification);
+    }
+
+    public function aktifkanStatus($id){
+        Mitra::where('id',$id)->update([
+            'status_kerja_sama'    =>  'aktif'
+        ]);
+
+        $notification = array(
+            'message' => 'Berhasil, Mitra berhasil diaktifkan!',
             'alert-type' => 'success'
         );
         return redirect()->route('mitras')->with($notification);

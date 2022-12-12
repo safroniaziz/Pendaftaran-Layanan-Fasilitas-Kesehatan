@@ -9,7 +9,7 @@
     @endif
 @endsection
 @section('halaman')
-    Halaman Administrator
+    Halaman LPMPP
 @endsection
 @section('content-title')
     Dashboard
@@ -58,7 +58,7 @@
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Tambah Data Jadwal Pelayanan</h3>
+                <h3 class="box-title"><i class="fa fa-calendar-times-o"></i>&nbsp;Tambah Data Syarat Pendaftaran</h3>
 
             </div>
             <div class="box-body">
@@ -77,43 +77,77 @@
                                 @else
                         @endif
                     </div>
-                    <form action="{{ route('jadwals.post') }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('pendaftars.post') }}" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }} {{ method_field('POST') }}
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Pilih Layanan</label>
-                            <select name="layanan_id" class="form-control">
-                                <option disabled selected>-- pilih layanan --</option>
-                                @foreach ($layanans as $pelayanan)
-                                    <option value="{{ $pelayanan->id }}">{{ $pelayanan->nama_layanan }}</option>
-                                @endforeach
-                            </select>
+                            <label for="exampleInputEmail1">Masukan Nama Lengkap</label>
+                            <input type="text" name="nama_lengkap" class="form-control" >
                             <div>
-                                @if ($errors->has('layanan_id'))
-                                    <small class="form-text text-danger">{{ $errors->first('layanan_id') }}</small>
+                                @if ($errors->has('nama_lengkap'))
+                                    <small class="form-text text-danger">{{ $errors->first('nama_lengkap') }}</small>
                                 @endif
                             </div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Pilih Hari Pelayanan</label>
-                            <select name="nama_hari" class="form-control">
-                                <option disabled selected>-- pilih nama hari --</option>
-                                <option value="Senin">Senin</option>
-                                <option value="Selasa">Selasa</option>
-                                <option value="Rabu">Rabu</option>
-                                <option value="Kamis">Kamis</option>
-                                <option value="Jumat">Jumat</option>
-                                <option value="Sabtu">Sabtu</option>
-                                <option value="Minggu">Minggu</option>
-                            </select>
+                            <label for="exampleInputEmail1">Masukan NIK</label>
+                            <input type="text" name="nik" class="form-control" >
                             <div>
-                                @if ($errors->has('nama_hari'))
-                                    <small class="form-text text-danger">{{ $errors->first('nama_hari') }}</small>
+                                @if ($errors->has('nik'))
+                                    <small class="form-text text-danger">{{ $errors->first('nik') }}</small>
                                 @endif
                             </div>
                         </div>
-
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Alamat</label>
+                            <input type="text" name="alamat" class="form-control" >
+                            <div>
+                                @if ($errors->has('alamat'))
+                                    <small class="form-text text-danger">{{ $errors->first('alamat') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Nomor HP</label>
+                            <input type="text" name="no_hp" class="form-control" >
+                            <div>
+                                @if ($errors->has('no_hp'))
+                                    <small class="form-text text-danger">{{ $errors->first('no_hp') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan umur</label>
+                            <input type="number" name="umur" class="form-control" >
+                            <div>
+                                @if ($errors->has('umur'))
+                                    <small class="form-text text-danger">{{ $errors->first('umur') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Pilih Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="form-control">
+                                <option disabled selected>-- Pilih Jenis Kelamin --</option>
+                                <option value="L">Laki-Laki</option>
+                                <option value="P">Perempuan</option>
+                            </select>
+                            <div>
+                                @if ($errors->has('jenis_kelamin'))
+                                    <small class="form-text text-danger">{{ $errors->first('jenis_kelamin') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Masukan Keluhan</label>
+                            <input type="text" name="keluhan" class="form-control" >
+                            <div>
+                                @if ($errors->has('keluhan'))
+                                    <small class="form-text text-danger">{{ $errors->first('keluhan') }}</small>
+                                @endif
+                            </div>
+                        </div>
                         <div class="col-md-12 text-center">
-                            <a href="{{ route('jadwals') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
+                            <a href="{{ route('pendaftars') }}" class="btn btn-warning btn-sm" style="color: white"><i class="fa fa-arrow-left"></i>&nbsp; Kembali</a>
                             <button type="reset" name="reset" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i>&nbsp;Ulangi</button>
                             <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-check-circle"></i>&nbsp;Simpan</button>
                         </div>

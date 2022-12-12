@@ -72,6 +72,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Layanan</th>
+                                        <th>Detail Alur Layanan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -80,6 +81,13 @@
                                         <tr>
                                             <td>{{ $index+1 }}</td>
                                             <td>{{ $alurlayanan->nama_alur_layanan }}</td>
+                                            <td class="text-center">
+                                                @if ($alurlayanan->detailalurlayanans()->count()> 0)
+                                                    <a href="{{ route('detailalurlayanans',[$alurlayanan->id]) }}" class="btn btn-success btn-sm btn-flat">{{ $alurlayanan->detailalurlayanans()->count() }}</a>
+                                                @else
+                                                    <a href="{{ route('detailalurlayanans',[$alurlayanan->id]) }}" class="btn btn-danger btn-sm btn-flat">{{ $alurlayanan->detailalurlayanans()->count() }}</a>
+                                                @endif
+                                            </td>
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>

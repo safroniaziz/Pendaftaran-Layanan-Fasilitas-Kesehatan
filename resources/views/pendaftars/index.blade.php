@@ -9,7 +9,7 @@
     @endif
 @endsection
 @section('halaman')
-    Halaman Administrator
+    Halaman LPMPP
 @endsection
 @section('content-title')
     Dashboard
@@ -59,9 +59,9 @@
             <div class="box box-primary">
 
                 <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data mitra</h3>
+                    <h3 class="box-title"><i class="fa fa-stethoscope"></i>&nbsp;Manajemen Data Syarat Pendaftaran</h3>
                     <div class="pull-right">
-                        <a href="{{ route('mitras.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah mitra</a>
+                        <a href="{{ route('pendaftars.create') }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>&nbsp; Tambah Pendaftar</a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -71,39 +71,35 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama mitra</th>
-                                        <th>Tanggal Kerja Sama</th>
-                                        <th>Status</th>
+                                        <th>Nama Lengkap</th>
+                                        <th>NIK</th>
+                                        <th>Alamat</th>
+                                        <th>Nomor HP</th>
+                                        <th>Umur</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Keluhan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($mitras as $index=> $mitra)
+                                    @foreach ($pendaftars as $index=> $pendaftar)
                                         <tr>
                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $mitra->nama_mitra }}</td>
-                                            <td>{{ $mitra->tanggal_kerja_sama }}</td>
-                                            <td>
-                                                @if ($mitra->status_kerja_sama == 'tidak_aktif')
-                                                    <form action="{{ route('mitras.aktifkan_status',[$mitra->id]) }}" method="post">
-                                                        {{ csrf_field() }} {{ method_field("PATCH") }}
-                                                        <button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-thumbs-down"></i>&nbsp; Tidak Aktif</button>
-                                                    </form>
-                                                @else
-                                                    <form action="{{ route('mitras.nonaktifkan_status',[$mitra->id]) }}" method="post">
-                                                        {{ csrf_field() }} {{ method_field("PATCH") }}
-                                                        <button type="submit" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-thumbs-up"></i>&nbsp;Aktif</button>
-                                                    </form>
-                                                @endif
-                                            </td>
+                                            <td>{{ $pendaftar->nama_lengkap }}</td>
+                                            <td>{{ $pendaftar->nik }}</td>
+                                            <td>{{ $pendaftar->alamat }}</td>
+                                            <td>{{ $pendaftar->no_hp }}</td>
+                                            <td>{{ $pendaftar->umur }}</td>
+                                            <td>{{ $pendaftar->jenis_kelamin }}</td>
+                                            <td>{{ $pendaftar->keluhan }}</td>
                                             <td style="display:inline-block !important;">
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                        <a href="{{ route('mitras.edit',[$mitra->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
+                                                        <a href="{{ route('pendaftars.edit',[$pendaftar->id]) }}" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-edit"></i>&nbsp; Edit</a>
                                                         </td>
                                                         <td>
-                                                        <form action="{{ route('mitras.delete',[$mitra->id]) }}" method="POST">
+                                                        <form action="{{ route('pendaftars.delete',[$pendaftar->id]) }}" method="POST">
                                                                 {{ csrf_field() }} {{ method_field("DELETE") }}
                                                                 <a href="" onClick="return confirm('Apakah anda yakin menghapus data ini?')"/><button type="submit" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-trash"></i>&nbsp; Hapus</button></a>
                                                             </form>

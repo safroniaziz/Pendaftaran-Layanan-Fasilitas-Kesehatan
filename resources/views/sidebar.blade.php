@@ -36,7 +36,11 @@
         <i class="fa fa-stethoscope"></i> <span> Syarat Pendaftaran</span>
     </a>
 </li>
-
+<li class="{{ set_active('pendaftars') }}">
+    <a href="{{ route('pendaftars') }}">
+        <i class="fa fa-stethoscope"></i> <span> Pendaftar</span>
+    </a>
+</li>
 <li class="">
     <a href="">
         <i class="fa fa-user"></i> <span>Profil Saya</span>
