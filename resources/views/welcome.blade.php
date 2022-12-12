@@ -59,9 +59,9 @@
 									Pengumuman Untuk Pendaftar Layanan Kesehatan
 								</div>
 								<ul class="list list-icons list-secondary" style="padding-left: 0px !important;">
-									<li style="list-style: none;" class="animate__animated animate__fadeInUp"><i class="fa fa-check text-info"></i>Waktu pelayanan vaksinasi dari hari Senin-Jumat pukul 08.00-14.00 waktu setempat.</li>
+									<li style="list-style: none;" class="animate__animated animate__fadeInUp"><i class="fa fa-check text-info"></i>Waktu pelayanan  dari hari Senin-Jumat pukul 08.00-14.00 waktu setempat.</li>
 									<li style="list-style: none;" class="animate__animated animate__fadeInUp"><i class="fa fa-check text-info"></i>Pendaftaran maksimal H-1 dari permohonan tanggal pelayanan.</li>
-									<li style="list-style: none;" class="animate__animated animate__fadeInUp"><i class="fa fa-check text-info"></i>Setiap permohonan akan dilakukan verifikasi oleh petugas klinik vaksin RS, permohonan dianggap sah jika telah diverifikasi dan mendapatkan konfirmasi email atau whatsapp.</li>
+									<li style="list-style: none;" class="animate__animated animate__fadeInUp"><i class="fa fa-check text-info"></i>Setiap permohonan akan dilakukan verifikasi oleh petugas klinik  RS, permohonan dianggap sah jika telah diverifikasi dan mendapatkan konfirmasi email atau whatsapp.</li>
 									<li style="list-style: none;" class="animate__animated animate__fadeInUp"><i class="fa fa-check text-info"></i>Jika pendaftar telah melakukan pendaftaran dan belum mendapatkan email atau whatsapp konfirmasi, silakan hubungi 0271-6775000.</li>
 								</ul>
 							</div>

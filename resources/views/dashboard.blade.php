@@ -9,7 +9,7 @@
     @endif
 @endsection
 @section('halaman')
-    Halaman LPMPP
+    Halaman Administrator
 @endsection
 @section('content-title')
     Dashboard
