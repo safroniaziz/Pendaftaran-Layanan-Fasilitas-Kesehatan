@@ -107,7 +107,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image" style="margin-top:6px;">
-          <img src="{{ asset('assets/student/images/logo.png') }}" style="height:auto;" class="img-circle" alt="User Image">
+          <img src="{{ asset('assets/images/logo.png') }}" style="height:auto;" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>

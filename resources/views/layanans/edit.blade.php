@@ -5,7 +5,7 @@
 @endsection
 @section('user-login')
     @if (Auth::check())
-        {{ Auth::user()->nama_lengkap }}
+        {{ Auth::user()->nama_user}}
     @endif
 @endsection
 @section('halaman')
